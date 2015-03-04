@@ -98,10 +98,10 @@ SETGATE(intr, 0,1,2,3);
 
 > #include "list.h"
 > 
-> int main(){
->   list_entry* l = (list_entry)malloc(sizeof(list_entry));
->   list_init(l);
->   return 0;
+> int main(){  
+>   list_entry* l = (list_entry)malloc(sizeof(list_entry));  
+>   list_init(l);  
+>   return 0;  
 > }
 
 ---
