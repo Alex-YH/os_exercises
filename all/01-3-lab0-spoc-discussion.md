@@ -48,9 +48,8 @@
 > 已经通过git clone http://www.github.com/chyyuu/ucore_lab 命令将源代码下载到本地。
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
-- [x]  
 
-> 
+> 已经尝试用ECLIPSE-CDT对lab1进行调试，初步了解了调试的方法。
 
 对于如下的代码段，请说明”：“后面的数字是什么含义
 ```
