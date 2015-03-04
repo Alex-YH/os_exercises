@@ -5,14 +5,14 @@
 ---
 
 能否读懂ucore中的AT&T格式的X86-32汇编语言？请列出你不理解的汇编语言。
-- [x]  
 
 >  http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
+>
+>  这些汇编语言在之前的学习中都有接触过，故都知道含义。
 
 虽然学过计算机原理和x86汇编（根据THU-CS的课程设置），但对ucore中涉及的哪些硬件设计或功能细节不够了解？
-- [x]  
 
->   
+>  我对ucore的引导过程
 
 
 哪些困难（请分优先级）会阻碍你自主完成lab实验？
@@ -44,12 +44,12 @@
 搭建好实验环境，请描述碰到的困难和解决的过程。
 - [x]  
 
-> 
+> 根据学堂在线上的视频，我们很顺利的完成了实验环境的搭建工作。
 
 熟悉基本的git命令行操作命令，从github上的[ucore git repo](http://www.github.com/chyyuu/ucore_lab)下载ucore lab实验
 - [x]  
 
-> 
+> 已经通过git clone http://www.github.com/chyyuu/ucore_lab 命令将源代码下载到本地。
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
 - [x]  
