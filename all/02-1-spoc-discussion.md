@@ -58,28 +58,28 @@
  >有22个系统调用，均为操作系统所需要向应用程序提供的最基本的功能。
  >大致的功能分类有：  
  >一、进程管理
-       sys_exit,  
-       sys_fork,  
-       sys_wait,  
-       sys_exec,  
-       sys_yield,    
-       sys_kill,   
-       sys_getpid,    
-       sys_lab6_set_priority,  
-       sys_sleep,  
+       sys_exit：退出进程。  
+       sys_fork：从原始进程中派出一个子进程。  
+       sys_wait：使进程进入等待状态。 
+       sys_exec：执行给定进程。  
+       sys_yield：使进程让出控制权。    
+       sys_kill：杀死给定进程。   
+       sys_getpid：获取进程id。    
+       sys_lab6_set_priority：设置进程优先级。  
+       sys_sleep：使进程进入休眠状态。  
  >二、内存管理  
-        sys_pgdir,  
+        sys_pgdir：获取页表信息。  
  >三、文件操作  
-       sys_open,  
-       sys_close,  
-       sys_read,  
-       sys_write,  
-       sys_seek,  
-       sys_fstat,  
-       sys_fsync,  
-       sys_getcwd,  
-       sys_getdirentry,  
-       sys_dup,  
+       sys_open：打开文件操作。 
+       sys_close：关闭给定文件。  
+       sys_read：从给定文件中读取数据。  
+       sys_write：向给定文件中写入数据。  
+       sys_seek：改变当前文件中的位置。  
+       sys_fstat：获取文件属性。  
+       sys_fsync：文件延迟写操作。  
+       sys_getcwd；获取当前目录。  
+       sys_getdirentry：获取目录信息。  
+       sys_dup：输入输出重定向。  
  
 ## 3.4 linux系统调用分析
  1. 通过分析[lab1_ex0](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex0.md)了解Linux应用的系统调用编写和含义。(w2l1)
