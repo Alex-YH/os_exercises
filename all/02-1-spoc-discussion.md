@@ -60,7 +60,7 @@
  >一、进程管理  
        sys_exit：退出进程。  
        sys_fork：从原始进程中派出一个子进程。  
-       sys_wait：使进程进入等待状态。 
+       sys_wait：使进程进入等待状态。   
        sys_exec：执行给定进程。  
        sys_yield：使进程让出控制权。    
        sys_kill：杀死给定进程。   
