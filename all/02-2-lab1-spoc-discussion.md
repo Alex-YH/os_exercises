@@ -20,7 +20,9 @@ NOTICE
  ```
 - [x]  
 
->  
+> 首先对中断描述符表进行初始化，向IDT数组中写入中断服务例程地址。之后通过执行lidt指令向CPU发送中断描述符表的地址。  
+> 8259中断控制器的初始过程即对中断掩码，中断向量表偏移量、master、slave进行设置。  
+> 8253时钟外初始化将计数器ticks设置为0之后，再打开IRQ_TIMER支持。
 
 lab1中完成了对哪些外设的访问？ (w2l2)
  ```
@@ -32,7 +34,10 @@ lab1中完成了对哪些外设的访问？ (w2l2)
  ```
 - [x]  
 
->  
+> 在初始化console时，同时打开了串口、键盘以及CGA的访问。  
+> 串口的初始化函数设置了数据的传输数据。  
+> CGA初始化对CGA指针位置进行了初始化。  
+> 最后打开时钟中断，访问时钟外设。
 
 lab1中的cprintf函数最终通过哪些外设完成了对字符串的输出？ (w2l2)
  ```
@@ -54,6 +59,30 @@ lab1中的cprintf函数最终通过哪些外设完成了对字符串的输出？
 
 lab1中printfmt函数用到了可变参，请参考写一个小的linux应用程序，完成实现定义和调用一个可变参数的函数。(spoc)
 - [x]  
+>    #include<stdio.h>  
+>    #include<string.h>  
+>    #include<stdarg.h>  
+>
+>    void sum(int n, ...){  
+>        va_list args;  
+>        int sum=0;  
+>  
+>        va_start(args,n);  
+>        for (int i=0;i<n;i++){  
+>            sum+=va_arg(args,int);  
+>        }  
+>        va_end(args);  
+>  
+>        printf("%d\n",sum);  
+>
+>    }  
+>
+>    int main(){  
+>        sum(1,1);  
+>        sum(2,1,2);  
+>        sum(3,1,2,3);  
+>        return 0;  
+>    }  
 
 
 
