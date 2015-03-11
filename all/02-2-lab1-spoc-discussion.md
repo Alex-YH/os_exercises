@@ -49,7 +49,7 @@ lab1中的cprintf函数最终通过哪些外设完成了对字符串的输出？
  ```
 - [x]  
 
->  
+> cprintf函数通过lpt_putc函数将字符输出到并口；通过cga_putc函数将字符输出到CGA；通过serial_putc函数将字符输出到串口。
 
 ---
 
