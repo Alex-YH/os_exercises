@@ -124,22 +124,22 @@ va 0xcd82c07c, pa 0x0c20907c, pde_idx 0x00000336, pde_ctx  0x00037003, pte_idx 0
 > va: 0xce6c3f32, pa: 0x7d4f32, pde_idx, 0x339, pde_ctx, 0x3a003, pte_idx: 0x2c3, pte_ctx: 0x7d4003  
 >
 > 所使用的代码如下：  
-> def convert(va, pa):
-    pde_idx = (va & 0xffc00000) >> 22
-    pde_ctx = ((pde_idx - 0x300 + 0x1) << 12) | 0x3
-    pte_idx = (va & 0x003ff000) >> 12
-    pte_ctx = (pa & 0xfffff000) | 0x3
-
-    print 'va:%s pa:%s, pde_idx:%s, pde_ctx:%s, pte_idx:%s, pte_ctx:%s' \
-        %(hex(va), hex(pa), hex(pde_idx), hex(pde_ctx), hex(pte_idx), hex(pte_ctx))
-
-
-if __name__ == '__main__':
-    list_va = [0xc2265b1f, 0xcc386bbc, 0xc7ed4d57, 0xca6cecc0, 0xc18072e8, 0xcd5f4b3a, 0xcc324c99, 0xc7204e52, 0xc3a90293, 0xce6c3f32]
-    list_pa = [0x0d8f1b1f, 0x0414cbbc, 0x07311d57, 0x0c9e9cc0, 0x007412e8, 0x06ec9b3a, 0x0008ac99, 0x0b8b6e52, 0x0f1fd293, 0x007d4f32]
-
-    for i in range(10):
-        convert(list_va[i], list_pa[i])
+> def convert(va, pa):  
+>   pde_idx = (va & 0xffc00000) >> 22  
+>   pde_ctx = ((pde_idx - 0x300 + 0x1) << 12) | 0x3  
+>   pte_idx = (va & 0x003ff000) >> 12  
+>   pte_ctx = (pa & 0xfffff000) | 0x3  
+>
+>   print 'va:%s pa:%s, pde_idx:%s, pde_ctx:%s, pte_idx:%s, pte_ctx:%s' \  
+>       %(hex(va), hex(pa), hex(pde_idx), hex(pde_ctx), hex(pte_idx), hex(pte_ctx))  
+>
+>
+> if __name__ == '__main__':  
+>   list_va = [0xc2265b1f, 0xcc386bbc, 0xc7ed4d57, 0xca6cecc0, 0xc18072e8, 0xcd5f4b3a, 0xcc324c99, 0xc7204e52, 0xc3a90293, 0xce6c3f32]  
+>   list_pa = [0x0d8f1b1f, 0x0414cbbc, 0x07311d57, 0x0c9e9cc0, 0x007412e8, 0x06ec9b3a, 0x0008ac99, 0x0b8b6e52, 0x0f1fd293, 0x007d4f32]  
+>
+>   for i in range(10):  
+>       convert(list_va[i], list_pa[i])  
 
 
 ---
