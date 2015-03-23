@@ -111,7 +111,36 @@ va 0xcd82c07c, pa 0x0c20907c, pde_idx 0x00000336, pde_ctx  0x00037003, pte_idx 0
 
 - [x]  
 
-> 
+> 本题的答案如下:  
+> va: 0xc2265b1f, pa: 0xd8f1b1f, pde_idx, 0x308, pde_ctx, 0x9003, pte_idx: 0x265, pte_ctx: 0xd8f1003    
+> va: 0xcc386bbc, pa: 0x414cbbc, pde_idx, 0x330, pde_ctx, 0x31003, pte_idx: 0x386, pte_ctx: 0x414c003  
+> va: 0xc7ed4d57, pa: 0x7311d57, pde_idx, 0x31f, pde_ctx, 0x20003, pte_idx: 0x2d4, pte_ctx: 0x7311003  
+> va: 0xca6cecc0, pa: 0xc9e9cc0, pde_idx, 0x329, pde_ctx, 0x2a003, pte_idx: 0x2ce, pte_ctx: 0xc9e9003  
+> va: 0xc18072e8, pa: 0x7412e8, pde_idx, 0x306, pde_ctx, 0x7003, pte_idx: 0x7, pte_ctx: 0x741003  
+> va: 0xcd5f4b3a, pa: 0x6ec9b3a, pde_idx, 0x335, pde_ctx, 0x36003, pte_idx: 0x1f4, pte_ctx: 0x6ec9003  
+> va: 0xcc324c99, pa: 0x8ac99, pde_idx, 0x330, pde_ctx, 0x31003, pte_idx: 0x324, pte_ctx: 0x8a003  
+> va: 0xc7204e52, pa: 0xb8b6e52, pde_idx, 0x31c, pde_ctx, 0x1d003, pte_idx: 0x204, pte_ctx: 0xb8b6003  
+> va: 0xc3a90293, pa: 0xf1fd293, pde_idx, 0x30e, pde_ctx, 0xf003, pte_idx: 0x290, pte_ctx: 0xf1fd003  
+> va: 0xce6c3f32, pa: 0x7d4f32, pde_idx, 0x339, pde_ctx, 0x3a003, pte_idx: 0x2c3, pte_ctx: 0x7d4003  
+>
+> 所使用的代码如下：  
+> def convert(va, pa):
+    pde_idx = (va & 0xffc00000) >> 22
+    pde_ctx = ((pde_idx - 0x300 + 0x1) << 12) | 0x3
+    pte_idx = (va & 0x003ff000) >> 12
+    pte_ctx = (pa & 0xfffff000) | 0x3
+
+    print 'va:%s pa:%s, pde_idx:%s, pde_ctx:%s, pte_idx:%s, pte_ctx:%s' \
+        %(hex(va), hex(pa), hex(pde_idx), hex(pde_ctx), hex(pte_idx), hex(pte_ctx))
+
+
+if __name__ == '__main__':
+    list_va = [0xc2265b1f, 0xcc386bbc, 0xc7ed4d57, 0xca6cecc0, 0xc18072e8, 0xcd5f4b3a, 0xcc324c99, 0xc7204e52, 0xc3a90293, 0xce6c3f32]
+    list_pa = [0x0d8f1b1f, 0x0414cbbc, 0x07311d57, 0x0c9e9cc0, 0x007412e8, 0x06ec9b3a, 0x0008ac99, 0x0b8b6e52, 0x0f1fd293, 0x007d4f32]
+
+    for i in range(10):
+        convert(list_va[i], list_pa[i])
+
 
 ---
 
