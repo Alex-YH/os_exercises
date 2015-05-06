@@ -60,8 +60,6 @@ b.start()
 a.start()
 
 
+Condition方法：
 
-
-
-	Monitor：首先用1个变量表示A与B的差值，然后判断A-B是否满足-M&lt;=A-B&lt;=N。在达到右临界值时就开始等待条件变量，在B往仓库里面加的时候就发送signal。
-	```
+```
