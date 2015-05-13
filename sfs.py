@@ -4,16 +4,14 @@ def deleteFile(self, tfile):
 
         inum = self.nameToInum[tfile]
         if self.inodes[inum].refCnt == 1:
-            daddr = self.inodes[inum].getAddr()
-            self.dataFree(daddr)
+            self.dataFree(inum)
             self.inodeFree(inum)
         else:
         	self.inodes[inum].decRefCnt()
-        pname = getParent(tfile)
-        pinum = self.nameToInum(pname)
-        paddr = self.inodes[pinum].getAddr()
-        self.inodes[pinum].decRefCnt()
-        self.data[paddr].delDirEntry(tfile)
+        parent = getParent(tfile)
+        num = self.nameToInum(parent)
+        self.inodes[num].decRefCnt()
+        self.data[num].delDirEntry(tfile)
     # YOUR CODE, YOUR ID
         # IF inode.refcnt ==1, THEN free data blocks first, then free inode, ELSE dec indoe.refcnt
         # remove from parent directory: delete from parent inum, delete from parent addr
@@ -32,16 +30,14 @@ def deleteFile(self, tfile):
         # inc parent ref count
         # now add to directory
     # DONE
-        pinum = self.nameToInum(parent)
-        paddr = self.inodes[pinum].getAddr()
+        num = self.nameToInum(parent)
+        paddr = self.inodes[num].getAddr()
         if self.data[paddr].dirEntryExists(newfile) == true:
-            print 'the newfile exists in this directory!'
+            print 'not exist'
             return -1;
          tinum = self.nameToInum(target)
-         taddr  = self.inodes[tinum].getAddr()
-         self.inodes[pinum].incRefCnt()
-         self.inodes[tinum].incRefCnt()
-         self.data[inum].addDirEntry(newfile,taddr)
+         self.inodes[num].incRefCnt()
+         self.inodes[t_num].incRefCnt()
         return tinum
 
     def createFile(self, parent, newfile, ftype):
@@ -55,8 +51,8 @@ def deleteFile(self, tfile):
         # inc parent ref count
         # and add to directory of parent
     # DONE
-        pinum = self.nameToInum(parent)
-        paddr = self.inodes[pinum].getAddr()
+        parent = self.nameToInum(parent)
+        paddr = self.inodes[parent].getAddr()
         if self.data[paddr].dirEntryExists(newfile) == true:
         	return -1
         if(self.data[paddr].getFreeEntries() <= 0):
@@ -72,7 +68,7 @@ def deleteFile(self, tfile):
        else:
        	self.inodes[iaddr].setAll('f',-1,1)
        self.inodes[paddr].incRefCnt()
-        return inum
+       return inum
 
     def writeFile(self, tfile, data):
         inum = self.nameToInum[tfile]
